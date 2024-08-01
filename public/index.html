@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitor de Basura</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+  <style>
+  
+  
+  </style>
+  <script>
+    
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Monitor de Basura</h1>
+    <div id="trash">
+      <div class="inner"></div>
+    </div>
+    <div id="status">Estado: Vacío</div>
+    <button onclick="location.reload()">Actualizar</button>
+    <canvas id="chart"></canvas>
+    <div class="background-animation">
+      <div class="neblina"></div>
+    </div>
+    <div class="spirals">
+      <div class="spiral"></div>
+      <div class="spiral"></div>
+      <div class="spiral"></div>
+    </div>
+    <div class="luz"></div>
+  </div>
+
+  <!-- Sección de registro -->
+  <div id="log-section">
+    <h2>Registro de Estados</h2>
+    <table id="log-table">
+      <thead>
+        <tr>
+          <th>Fecha y Hora</th>
+          <th>Estado</th>
+          <th>Duración</th>
+        </tr>
+      </thead>
+      <tbody id="log-body">
+        <!-- Los registros se añadirán aquí -->
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

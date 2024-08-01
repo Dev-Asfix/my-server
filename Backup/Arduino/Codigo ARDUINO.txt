@@ -1,0 +1,65 @@
+#include <Servo.h>  
+Servo servo1;  
+Servo servo2;  
+
+const int trigPin = 5;    
+const int echoPin = 6;   
+const int servoPin1 = 7;
+const int servoPin2 = 8;
+
+long duration, dist;   
+long aver[3];  
+
+void setup() 
+{       
+    Serial.begin(9600);  // Iniciar la comunicación serial
+    servo1.attach(servoPin1);  
+    servo2.attach(servoPin2);  
+    pinMode(trigPin, OUTPUT);  
+    pinMode(echoPin, INPUT);  
+    
+    servo1.write(0);         
+    servo2.write(0);
+    delay(100);
+}
+
+void measure() 
+{  
+    digitalWrite(trigPin, LOW);
+    delayMicroseconds(2);
+    digitalWrite(trigPin, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+    duration = pulseIn(echoPin, HIGH);
+    dist = (duration / 2) / 29.1;    
+}
+
+void loop() 
+{ 
+    for (int i = 0; i < 3; i++) 
+    {   
+        measure();               
+        aver[i] = dist;            
+        delay(10);             
+    }
+    
+    dist = (aver[0] + aver[1] + aver[2]) / 3;    
+
+    Serial.print("Distancia: ");
+    Serial.println(dist);  // Imprimir la distancia medida para depuración
+
+    if (dist < 90)
+    {
+        servo1.write(90);  // Abre la tapa
+        servo2.write(90);  // Abre la tapa
+        Serial.println("Abriendo tapa");
+    }
+    else
+    {
+        servo1.write(0);   // Cierra la tapa
+        servo2.write(0);   // Cierra la tapa
+        Serial.println("Cerrando tapa");
+    }
+    
+    delay(500);  // Pequeña pausa para evitar mediciones demasiado rápidas
+}

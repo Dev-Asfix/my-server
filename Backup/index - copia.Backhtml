@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estado del Tacho de Basura</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const statusElement = document.getElementById('status');
+      const ws = new WebSocket('ws://192.168.18.22:3000');
+
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        statusElement.textContent = `Estado: ${data.status === 'full' ? 'Basura Llena' : 'Basura Vacía'}`;
+      };
+
+      ws.onopen = () => {
+        console.log('Conectado al WebSocket');
+      };
+
+      ws.onclose = () => {
+        console.log('Desconectado del WebSocket');
+      };
+    });
+  </script>
+</head>
+<body>
+  <h1>Estado del Tacho de Basura</h1>
+  <p id="status">Estado: Vacío</p>
+</body>
+</html>

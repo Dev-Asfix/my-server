@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estadísticas del Sensor</title>
+  <link rel="stylesheet" href="stats.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var ctx = document.getElementById('barChart').getContext('2d');
+      var ctx2 = document.getElementById('lineChart').getContext('2d');
+
+      var barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Lleno', 'Vacío'],
+          datasets: [{
+            label: 'Frecuencia de estados',
+            data: [0, 0], // Inicializa los datos
+            backgroundColor: ['#ff0000', '#00ff00']
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: { beginAtZero: true },
+            y: { beginAtZero: true }
+          }
+        }
+      });
+
+      var lineChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+          labels: [], // Etiquetas de tiempo
+          datasets: [{
+            label: 'Estado a lo largo del tiempo',
+            data: [], // Datos históricos
+            borderColor: '#007bff',
+            backgroundColor: 'rgba(0, 123, 255, 0.5)',
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: { beginAtZero: true },
+            y: { beginAtZero: true }
+          }
+        }
+      });
+
+      // Simular datos para demostración
+      setInterval(function() {
+        var now = new Date().toLocaleTimeString();
+        var randomData = Math.floor(Math.random() * 2); // 0 o 1
+        lineChart.data.labels.push(now);
+        lineChart.data.datasets[0].data.push(randomData);
+        lineChart.update();
+
+        barChart.data.datasets[0].data[randomData]++;
+        barChart.update();
+      }, 1000); // Actualiza cada segundo
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Estadísticas del Sensor</h1>
+    <canvas id="barChart" width="400" height="200"></canvas>
+    <canvas id="lineChart" width="400" height="200"></canvas>
+    <br>
+    <button onclick="location.href='index.html'">Volver</button>
+  </div>
+</body>
+</html>

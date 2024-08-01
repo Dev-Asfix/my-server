@@ -1,0 +1,325 @@
+/* Archivo: styles.css */
+
+/* Estilos generales del body */
+body {
+  font-family: Arial, sans-serif; /* Define la fuente de texto */
+  background-color: #000; /* Fondo negro */
+  color: #fff; /* Texto blanco */
+  margin: 0; /* Elimina el margen predeterminado */
+  padding: 0; /* Elimina el padding predeterminado */
+  text-align: center; /* Centra el texto */
+}
+
+/* Estilo para los encabezados de primer nivel (h1) */
+h1 {
+  color: #fff; /* Color blanco para el texto */
+}
+
+/* Estilo para el estado del sistema */
+#status {
+  font-size: 1.5em; /* Tamaño de fuente mayor */
+  color: #ff0000; /* Rojo para indicar problemas */
+  margin: 20px; /* Margen alrededor del elemento */
+}
+
+/* Contenedor principal para centrar y estilizar el contenido */
+.container {
+  max-width: 800px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  padding: 20px; /* Espaciado interno del contenedor */
+  background-color: #333; /* Fondo gris oscuro */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Sombra alrededor del contenedor */
+}
+
+/* Estilo para los botones */
+button {
+  padding: 10px 20px; /* Espaciado interno del botón */
+  font-size: 1em; /* Tamaño de la fuente del botón */
+  color: #fff; /* Texto blanco */
+  background-color: #007bff; /* Fondo azul */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de mano al pasar sobre el botón */
+  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+/* Estilo para el botón al pasar el cursor sobre él */
+button:hover {
+  background-color: #0056b3; /* Fondo azul oscuro al pasar el cursor */
+}
+
+/* Estilo para el elemento canvas */
+canvas {
+  margin: 20px auto; /* Margen superior e inferior, centrado horizontalmente */
+  display: block; /* Hacer que el canvas se comporte como un bloque */
+}
+
+/* Estilos adicionales para body, con configuraciones para la animación de fondo */
+body {
+  font-family: Arial, sans-serif; /* Define la fuente de texto */
+  margin: 0; /* Elimina el margen predeterminado */
+  padding: 0; /* Elimina el padding predeterminado */
+  text-align: center; /* Centra el texto */
+  overflow: hidden; /* Oculta el contenido desbordado */
+  position: relative; /* Posiciona el body de manera relativa */
+  background-color: #000; /* Fondo negro */
+  color: #fff; /* Texto blanco */
+  display: flex; /* Usa flexbox para centrar el contenido */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+  height: 100vh; /* Altura del viewport completo */
+}
+
+/* Contenedor principal ajustado para pantalla completa */
+.container {
+  max-width: 1000px; /* Ancho máximo del contenedor */
+  width: 100%; /* Ancho completo del contenedor */
+  padding: 20px; /* Espaciado interno del contenedor */
+  background-color: #333; /* Fondo gris oscuro */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Sombra alrededor del contenedor */
+  position: relative; /* Posiciona el contenedor de manera relativa */
+  z-index: 10; /* Apila el contenedor sobre otros elementos */
+  display: flex; /* Usa flexbox para organizar el contenido */
+  flex-direction: column; /* Organiza los elementos en columna */
+  gap: 20px; /* Espacio entre los elementos */
+}
+
+/* Estilo para el tacho */
+#trash {
+  width: 150px; /* Ancho del tacho */
+  height: 300px; /* Altura del tacho */
+  background: #555; /* Fondo gris medio */
+  border-radius: 10px; /* Bordes redondeados */
+  position: relative; /* Posiciona el tacho de manera relativa */
+  perspective: 1000px; /* Perspectiva para los efectos 3D */
+}
+
+/* Estilo para el interior del tacho */
+#trash .inner {
+  position: absolute; /* Posiciona el interior de manera absoluta */
+  width: 100%; /* Ancho completo del contenedor */
+  height: 100%; /* Altura completa del contenedor */
+  background: #333; /* Fondo gris oscuro */
+  border-radius: 10px; /* Bordes redondeados */
+  transform-style: preserve-3d; /* Preserva el estilo 3D */
+  transition: transform 0.5s, background 0.5s; /* Transición suave para transformación y fondo */
+}
+
+/* Estilo para el efecto de lleno del tacho */
+#trash .inner:before {
+  content: ""; /* Contenido vacío */
+  position: absolute; /* Posiciona el efecto de manera absoluta */
+  top: 0; /* Posiciona al principio del tacho */
+  left: 0; /* Posiciona al principio del tacho */
+  width: 100%; /* Ancho completo del tacho */
+  height: 100%; /* Altura completa del tacho */
+  background: rgba(0, 255, 0, 0.5); /* Fondo verde semi-transparente */
+  border-radius: 10px 10px 0 0; /* Bordes redondeados en la parte superior */
+  transition: height 0.5s; /* Transición suave para la altura */
+}
+
+/* Estilo para el tacho lleno */
+#trash.full .inner:before {
+  height: 90%; /* Altura del 90% cuando el tacho está lleno */
+}
+
+/* Estilo para el tacho vacío */
+#trash.empty .inner:before {
+  height: 10%; /* Altura del 10% cuando el tacho está vacío */
+}
+
+/* Estilo para la transformación del tacho lleno */
+#trash.full .inner {
+  transform: rotateX(-10deg) rotateY(-15deg); /* Rotación 3D para el efecto de lleno */
+  background: rgba(0, 255, 0, 0.3); /* Fondo verde semi-transparente */
+}
+
+/* Estilo para la transformación del tacho vacío */
+#trash.empty .inner {
+  transform: rotateX(0deg) rotateY(0deg); /* Sin rotación para el efecto de vacío */
+  background: rgba(255, 0, 0, 0.3); /* Fondo rojo semi-transparente */
+}
+
+/* Estilo para el estado del sistema */
+#status {
+  font-size: 1.5em; /* Tamaño de fuente mayor */
+  color: #ff0000; /* Rojo para indicar problemas */
+}
+
+/* Estilo para los botones */
+button {
+  padding: 10px 20px; /* Espaciado interno del botón */
+  font-size: 1em; /* Tamaño de la fuente del botón */
+  color: #fff; /* Texto blanco */
+  background-color: #007bff; /* Fondo azul */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de mano al pasar sobre el botón */
+  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+/* Estilo para el botón al pasar el cursor sobre él */
+button:hover {
+  background-color: #0056b3; /* Fondo azul oscuro al pasar el cursor */
+}
+
+/* Estilo para el elemento canvas */
+canvas {
+  margin-top: 20px; /* Margen superior */
+  display: block; /* Hacer que el canvas se comporte como un bloque */
+}
+
+/* Animación de fondo con neblina */
+.background-animation {
+  position: absolute; /* Posiciona la animación de fondo de manera absoluta */
+  top: 0; /* Posiciona al principio del viewport */
+  left: 0; /* Posiciona al principio del viewport */
+  width: 100%; /* Ancho completo del viewport */
+  height: 100%; /* Altura completa del viewport */
+  pointer-events: none; /* Ignora los eventos del puntero */
+  z-index: 1; /* Apila por debajo de otros elementos */
+}
+
+/* Estilo para la neblina animada */
+.background-animation .neblina {
+  position: absolute; /* Posiciona la neblina de manera absoluta */
+  width: 200%; /* Ancho mayor para cubrir toda el área */
+  height: 200%; /* Altura mayor para cubrir toda el área */
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,0,0,0.3) 20%, rgba(0,0,255,0.3) 40%, rgba(0,255,0,0.3) 60%, rgba(255,255,255,0.1) 100%); /* Gradiente radial de colores */
+  animation: neblina-animation 10s infinite alternate; /* Animación continua */
+  filter: blur(8px); /* Desenfoque */
+  opacity: 0.5; /* Opacidad */
+}
+
+/* Animación de la neblina */
+@keyframes neblina-animation {
+  0% { transform: translate(0, 0); } /* Posición inicial */
+  100% { transform: translate(-50%, -50%); } /* Posición final */
+}
+
+/* Estilo para los espirales animados */
+.spirals {
+  position: absolute; /* Posiciona las espirales de manera absoluta */
+  top: 0; /* Posiciona al principio del viewport */
+  left: 0; /* Posiciona al principio del viewport */
+  width: 100%; /* Ancho completo del viewport */
+  height: 100%; /* Altura completa del viewport */
+  pointer-events: none; /* Ignora los eventos del puntero */
+  z-index: 2; /* Apila sobre la neblina */
+}
+
+/* Estilo para las espirales individuales */
+.spiral {
+  position: absolute; /* Posiciona la espiral de manera absoluta */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Borde blanco semi-transparente */
+  border-radius: 50%; /* Forma circular */
+  width: 120px; /* Ancho de la espiral */
+  height: 120px; /* Altura de la espiral */
+  top: 50%; /* Posiciona verticalmente en el centro */
+  left: 50%; /* Posiciona horizontalmente en el centro */
+  transform: translate(-50%, -50%); /* Centra la espiral */
+  animation: spiral-animation 6s linear infinite; /* Animación continua */
+}
+
+/* Animación de las espirales */
+@keyframes spiral-animation {
+  0% { transform: translate(-50%, -50%) rotate(0deg); } /* Posición y rotación inicial */
+  100% { transform: translate(-50%, -50%) rotate(360deg); } /* Rotación final */
+}
+
+/* Estilo para las espirales cuando el tacho está lleno */
+.spiral.full {
+  border-color: #ff0000; /* Borde rojo */
+}
+
+/* Estilo para las espirales cuando el tacho está vacío */
+.spiral.empty {
+  border-color: #00ff00; /* Borde verde */
+}
+
+/* Estilo para la luz fluorescente */
+.luz {
+  position: absolute; /* Posiciona la luz de manera absoluta */
+  top: 0; /* Posiciona al principio del viewport */
+  left: 0; /* Posiciona al principio del viewport */
+  width: 100%; /* Ancho completo del viewport */
+  height: 100%; /* Altura completa del viewport */
+  pointer-events: none; /* Ignora los eventos del puntero */
+  z-index: 3; /* Apila sobre las espirales */
+  opacity: 0; /* Opacidad inicial */
+  transition: opacity 0.5s; /* Transición suave para la opacidad */
+}
+
+/* Estilo para la luz fluorescente cuando el tacho está lleno */
+.luz.full {
+  opacity: 0.8; /* Opacidad elevada */
+  background: radial-gradient(circle, rgba(0, 255, 0, 0.5) 0%, rgba(0, 255, 0, 0) 70%); /* Gradiente radial verde */
+}
+
+/* Estilo para la luz fluorescente cuando el tacho está vacío */
+.luz.empty {
+  opacity: 0; /* Opacidad nula */
+}
+
+/* Estilos para la sección de registro */
+#log-section {
+  margin-top: 20px; /* Margen superior */
+  border-radius: 8px; /* Bordes redondeados */
+  overflow: hidden; /* Oculta el contenido desbordado */
+  position: relative; /* Posiciona la sección de manera relativa */
+  z-index: 10; /* Apila sobre otros elementos */
+  padding: 20px; /* Espaciado interno */
+  background-color: #222; /* Fondo gris muy oscuro */
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6); /* Sombra verde */
+}
+
+/* Estilos para la tabla de registro */
+#log-table {
+  width: 100%; /* Ancho completo */
+  border-collapse: collapse; /* Elimina los espacios entre las celdas */
+}
+
+/* Estilo para las celdas de la tabla */
+#log-table th, #log-table td {
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #444; /* Borde gris oscuro */
+}
+
+/* Estilo para los encabezados de la tabla */
+#log-table th {
+  background-color: #333; /* Fondo gris oscuro */
+  color: #fff; /* Texto blanco */
+}
+
+/* Estilo para las celdas de la tabla */
+#log-table td {
+  background-color: #111; /* Fondo negro */
+}
+
+/* Estilo para las filas de la tabla */
+#log-table tr {
+  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+/* Estilo para las filas cuando están vacías */
+#log-table tr.empty {
+  background-color: rgba(255, 0, 0, 0.3); /* Fondo rojo semi-transparente */
+}
+
+/* Estilo para las filas cuando están llenas */
+#log-table tr.full {
+  background-color: rgba(0, 255, 0, 0.3); /* Fondo verde semi-transparente */
+}
+
+/* Animación para la nueva fila de la tabla */
+@keyframes add-row-animation {
+  0% { background-color: rgba(0, 0, 0, 0); } /* Fondo inicial transparente */
+  100% { background-color: rgba(0, 255, 0, 0.2); } /* Fondo verde semi-transparente */
+}
+
+/* Aplicación de la animación para la fila */
+.row-animation {
+  animation: add-row-animation 1s ease-in-out; /* Animación de 1 segundo */
+}
